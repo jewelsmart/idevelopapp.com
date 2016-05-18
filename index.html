@@ -45,6 +45,7 @@
   <!-- ClickTale end of Top part -->
 
 
+
 </head>
 
 <body>
@@ -946,13 +947,47 @@ clicky_site_ids.push(100954864);
   <!--Google Analytics ends-->
   
   
-  <!-- ClickTale Bottom part -->
+  <!-- ClickTale Bottom part (XHTML) -->
 <script type='text/javascript'>
-	document.write(unescape("%3Cscript%20src='"+
-	(document.location.protocol=='https:'? "https://cdnssl.clicktale.net/www07/ptc/7955e91e-7772-4a17-a96d-94d08aaff696.js":"http://cdn.clicktale.net/www07/ptc/7955e91e-7772-4a17-a96d-94d08aaff696.js") + 
-	"'%20type='text/javascript'%3E%3C/script%3E"));
+	(function(){
+	if (typeof (ClickTaleCreateDOMElement) != "function")
+{
+	ClickTaleCreateDOMElement = function(tagName)
+	{
+		if (document.createElementNS)
+		{
+			return document.createElementNS('http://www.w3.org/1999/xhtml', tagName);
+		}
+		return document.createElement(tagName);
+	}
+}
+
+if (typeof (ClickTaleAppendInHead) != "function")
+{
+	ClickTaleAppendInHead = function(element)
+	{
+		var parent = document.getElementsByTagName('head').item(0) || document.documentElement;
+		parent.appendChild(element);
+	}
+}
+
+if (typeof (ClickTaleXHTMLCompliantScriptTagCreate) != "function")
+{
+	ClickTaleXHTMLCompliantScriptTagCreate = function(code)
+	{
+		var script = ClickTaleCreateDOMElement('script');
+		script.setAttribute("type", "text/javascript");
+		script.text = code;
+		return script;
+	}
+}
+	var scriptElement = ClickTaleCreateDOMElement('script');
+	scriptElement.type = "text/javascript";
+	scriptElement.src = (document.location.protocol=='https:'? 'https://cdnssl.clicktale.net/www07/ptc/7955e91e-7772-4a17-a96d-94d08aaff696.js': 'http://cdn.clicktale.net/www07/ptc/7955e91e-7772-4a17-a96d-94d08aaff696.js');
+	document.body.appendChild(scriptElement);})();
 </script>
-<!-- ClickTale end of Bottom part -->
+<!-- ClickTale end of Bottom part (XHTML) -->
+
 
   
   
